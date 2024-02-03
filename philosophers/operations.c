@@ -31,9 +31,7 @@ int	checking_if_finished(t_data *val)
 		&& val->cycle_of_eat != -1)
 		i++;
 	if (i == val[0].nmb_philo)
-	{
 		return (1);
-	}
 	return (0);
 }
 
@@ -42,7 +40,9 @@ void	check_death(t_data *info)
 	size_t	t_now;
 
 	t_now = cur_time();
+    printf("cur=time =%ld\n", t_now);
 	t_now = t_now - info->last_ate_time;
+    printf("t_now =%ld\n", t_now);
 	if (t_now >= (size_t)info->time_to_die)
 		*info->dead = 0;
 }

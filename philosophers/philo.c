@@ -19,7 +19,7 @@ void	*my_main(void *val)
 	info = (t_data *)val;
 	info->last_ate_time = cur_time();
 	if (info->thread_nmb % 2 == 0)
-		usleep(100);
+		usleep(20);
 	while (1)
 	{
 		taking_forks(info);
@@ -132,6 +132,5 @@ int	main(int argc, char **argv)
 		return (3);
 	}
 	free_all(val, argv, mutex);
-	sleep(1000);
 	return (0);
 }
