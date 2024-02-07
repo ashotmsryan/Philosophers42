@@ -19,4 +19,21 @@ Philosophers don’t speak with each other.
 Philosophers don’t know if another philosopher is about to die.
 No need to say that philosophers should avoid dying!
 
+This project challenges to implement a solution using threads, mutexes
+to manage the dining philosophers' resource-sharing problem.
 This project is a good way to learn about multithreading and its inadequate sides))
+
+<h3>compile and run</h3>
+Compile the project using "make", then run command line below
+```
+  ./philo 5 800 200 100 7
+```
+5 is the quantity of philosophers<br>
+800 is life time of philosopher<br>
+200 is eating time<br>
+100 if sleeping time<br>
+7 is number of eating for each philosopher<br>
+</br>
+-Test with 5 800 200 200, no one should die!<br>
+-Test with 4 410 200 200, no one should die!<br>
+-Test with 4 310 200 100, a philasopher should die!<br>
