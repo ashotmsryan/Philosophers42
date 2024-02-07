@@ -40,9 +40,7 @@ void	check_death(t_data *info)
 	size_t	t_now;
 
 	t_now = cur_time();
-    printf("cur=time =%ld\n", t_now);
 	t_now = t_now - info->last_ate_time;
-    printf("t_now =%ld\n", t_now);
 	if (t_now >= (size_t)info->time_to_die)
 		*info->dead = 0;
 }
@@ -56,7 +54,7 @@ void	checking_6(t_data *val)
 	{
 		if (i == val->nmb_philo)
 			i = 0;
-		usleep(10);
+		usleep(50);
 		check_death(&val[i]);
 		if ((checking_if_finished(val) == 1) || *val->dead == 0)
 		{

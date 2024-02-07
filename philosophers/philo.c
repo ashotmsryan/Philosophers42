@@ -19,7 +19,7 @@ void	*my_main(void *val)
 	info = (t_data *)val;
 	info->last_ate_time = cur_time();
 	if (info->thread_nmb % 2 == 0)
-		usleep(20);
+		usleep(1000);
 	while (1)
 	{
 		taking_forks(info);
@@ -104,6 +104,7 @@ int	norm_main(t_data *val, char **argv, pthread_mutex_t *print,
 	if (making_threads(val, mutex) != 0)
 		return (1);
 	checking_6(val);
+	free_all(val, argv, mutex);
 	return (0);
 }
 
@@ -115,22 +116,27 @@ int	main(int argc, char **argv)
 
 	if (argc == 5 || argc == 6)
 	{
-		if (norm_malloc(&print, &val, &mutex, argv))
+        val = NULL;
+        print = NULL;
+        mutex = NULL;
+		if (norm_malloc(&print, &val, &mutex, argv) == 0)
 		{
+            if (norm_main(val, argv, print, mutex) > 0)
+            {
+                free_all(val, argv, mutex);
+                return (2);
+            }
+		}
+        else
+        {
 			free_all(val, argv, mutex);
 			return (1);
-		}
-		if (norm_main(val, argv, print, mutex) > 0)
-		{
-			free_all(val, argv, mutex);
-			return (2);
-		}
-	}
+        }
+    }
 	else
 	{
 		printf("Less/more argument input!\n");
 		return (3);
 	}
-	free_all(val, argv, mutex);
 	return (0);
 }

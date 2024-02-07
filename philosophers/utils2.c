@@ -18,7 +18,8 @@ void	_timer(size_t tt)
 	size_t	n_time;
 
 	time = cur_time();
-	n_time = cur_time();
+	// n_time = cur_time();
+	n_time = time;
 	while ((n_time - time) < tt)
 	{
 		n_time = cur_time();
@@ -54,13 +55,13 @@ void	free_all(t_data *val, char **av, pthread_mutex_t *mutex)
 
 	i = -1;
 	s = ft_atoi(av[1]);
-	if (val[0].pt)
+	if (val && val[0].pt)
 		free(val[0].pt);
-	if (val[0].start_time)
+	if (val && val[0].start_time)
 		free(val[0].start_time);
-	if (val[0].dead)
+	if (val && val[0].dead)
 		free(val[0].dead);
-	while (++i < s)
+	while (mutex && s >= 0 && ++i < s)
 		pthread_mutex_destroy(&mutex[i]);
 	if (mutex)
 		free(mutex);
