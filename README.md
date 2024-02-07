@@ -25,8 +25,9 @@ This project is a good way to learn about multithreading and its inadequate side
 
 <h3>compile and run</h3>
 Compile the project using "make", then run command line below
+
 ```
-  ./philo 5 800 200 100 7
+./philo 5 800 200 100 7
 ```
 5 is the quantity of philosophers<br>
 800 is life time of philosopher<br>
